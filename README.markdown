@@ -1,4 +1,4 @@
-# User Management - Django Internship Assignment
+# User Management - Django Assignment
 
 A Django project with REST API, token authentication, Celery, and Telegram bot integration.
 
