@@ -6,7 +6,7 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='UnVDsEGuBZ7t81BlCnM1ixODxJ6seVd0Fdn00ugaqhM5E1Kl6fr--eBwcKTg8Iu31X0')
-DEBUG = config('DEBUG', default=True, cast=bool)  # Use .env, default to True for development
+DEBUG = False
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
 
