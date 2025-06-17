@@ -7,12 +7,18 @@ django.setup()
 from decouple import config
 import logging
 from telegram.ext import Updater, CommandHandler
+from api.models import TelegramUser  # Import the model
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN')
 
 def start(update, context):
-    update.message.reply_text('Hii, This is Piyush')
+    username = update.message.from_user.username
+    if username:
+        TelegramUser.objects.get_or_create(username=username)
+        update.message.reply_text(f'Welcome, {username}! Your username has been recorded.')
+    else:
+        update.message.reply_text('Please set a Telegram username in your profile.')
 
 def main():
     try:
